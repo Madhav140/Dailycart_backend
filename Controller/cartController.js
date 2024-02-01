@@ -26,3 +26,30 @@ exports.addToCartController = async(req,res)=>{
 
 
 }
+
+
+
+exports.getItemFromCartController = async(req,res)=>{
+   const userId = req.payload
+
+     try {
+        const allProductUser = await carts.find({userId})
+        res.status(200).json(allProductUser)
+     } catch (error) {
+        res.status(401).json(error)
+     }
+
+}
+
+
+
+exports.removeItemController = async(req,res)=>{
+    const {id}=req.params
+    
+     try {
+        await carts.deleteOne({_id:id})
+        res.status(200).json('removed the item')
+     } catch (error) {
+        res.status(401).json(error)
+     }
+}

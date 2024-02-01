@@ -31,5 +31,11 @@ router.delete('/wishlist/remove/:id',jwtMiddleware,wishlistController.removeFrom
 //add to cart
 router.post('/add-cart',jwtMiddleware,cartController.addToCartController)
 
+//get cart item
+router.get('/cart/allproduct',jwtMiddleware,cartController.getItemFromCartController)
+
+//remove from cart
+router.delete('/cart/removeitem/:id',jwtMiddleware,cartController.removeItemController)
+
 
 module.exports = router
